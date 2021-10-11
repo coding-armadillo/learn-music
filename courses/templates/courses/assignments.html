@@ -45,6 +45,7 @@
         <h1 class="text-lg font-semibold text-gray-800 mt-2">
           {{ assignment.text }}
         </h1>
+        {% if assignment.song %}
         <div class="flex items-center justify-center mt-4">
           <audio controls>
             <source
@@ -53,6 +54,7 @@
             />
           </audio>
         </div>
+        {% endif %}
       </div>
     </div>
 

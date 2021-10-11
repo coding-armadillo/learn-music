@@ -28,7 +28,9 @@ def homeworks(request, code):
         request,
         "courses/homeworks.html",
         {
-            "homeworks": models.Homework.objects.filter(course=course).all(),
+            "homeworks": models.Homework.objects.filter(course=course)
+            .order_by("name")
+            .all(),
             "course": course,
         },
     )
@@ -44,7 +46,9 @@ def assignments(request, code, name):
         request,
         "courses/assignments.html",
         {
-            "assignments": models.Assignment.objects.filter(homework=homework).all(),
+            "assignments": models.Assignment.objects.filter(homework=homework)
+            .order_by("name")
+            .all(),
             "homework": homework,
         },
     )
