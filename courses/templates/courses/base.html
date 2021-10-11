@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col">
+      <div class="bg-gray-200 text-center">
+        <div class="flex flex-wrap place-items-center">
+          <section class="relative mx-auto">
+            <nav class="flex justify-between bg-gray-900 text-white w-screen">
+              <div class="px-5 xl:px-12 py-6 flex w-full items-center">
+                <a class="text-3xl font-bold font-heading" href="/">
+                  <img
+                    class="h-9"
+                    src="https://cdn0.iconfinder.com/data/icons/brands-colored-2/232/music-social-network-brand-logo-256.png"
+                    alt="logo"
+                  />
+                </a>
+                <ul
+                  class="
+                    flex
+                    px-4
+                    mx-auto
+                    font-semibold font-heading
+                    space-x-12
+                  "
+                >
+                  <li>
+                    <a
+                      class="hover:text-gray-200"
+                      href="{% url 'courses:courses' %}"
+                      >Courses</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="hover:text-gray-200"
+                      href="{% url 'courses:contact_us' %}"
+                    >
+                      Contact Us
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </section>
+        </div>
+      </div>
+      <div class="bg-gray-100 p-6 flex-grow">
+        {% block content %}{% endblock %}
+      </div>
+      <div class="bg-gray-200 p-6 h-24 text-center">
+        <p>&copy; Copyright 2021 by Coding Armadillo</p>
+      </div>
+    </div>
+  </body>
+</html>

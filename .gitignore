@@ -1,4 +1,6 @@
 __pycache__
+**/migrations/[0-9]*_*.py
 db.sqlite3
+mediafiles
 staticfiles
 venv

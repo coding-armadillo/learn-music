@@ -1,0 +1,86 @@
+{% extends "courses/base.html" %}
+
+<!-- block content -->
+{% block content %}
+
+<div class="flex items-center">
+  <div class="container mx-auto">
+    <div class="max-w-lg mx-auto my-10 bg-white p-5 rounded-md shadow-sm">
+      <div class="text-center">
+        <h1 class="my-3 text-3xl font-semibold text-gray-700">Contact Us</h1>
+        <p class="text-gray-400">
+          Fill up the form below to send us a message.
+        </p>
+      </div>
+      <div class="m-7">
+        <form action="https://formspree.io/f/xayakkld" method="POST">
+          <div class="mb-6">
+            <label for="email" class="block mb-2 text-sm text-gray-600">
+              Email Address
+              <input
+                type="email"
+                name="_replyto"
+                placeholder="you@company.com"
+                required
+                class="
+                  w-full
+                  px-3
+                  py-2
+                  placeholder-gray-300
+                  border border-gray-300
+                  rounded-md
+                  focus:outline-none
+                  focus:ring
+                  focus:ring-indigo-100
+                  focus:border-indigo-300
+                "
+              />
+            </label>
+          </div>
+          <div class="mb-6">
+            <label for="message" class="block mb-2 text-sm text-gray-600">
+              Your Message
+            </label>
+            <textarea
+              rows="5"
+              name="message"
+              placeholder="Your Message"
+              class="
+                w-full
+                px-3
+                py-2
+                placeholder-gray-300
+                border border-gray-300
+                rounded-md
+                focus:outline-none
+                focus:ring
+                focus:ring-indigo-100
+                focus:border-indigo-300
+              "
+              required
+            ></textarea>
+          </div>
+          <div class="mb-6">
+            <button
+              type="submit"
+              class="
+                w-full
+                px-3
+                py-4
+                text-white
+                bg-indigo-500
+                rounded-md
+                focus:bg-indigo-600 focus:outline-none
+              "
+            >
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- endblock -->
+{% endblock %}
