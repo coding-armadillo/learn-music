@@ -2,7 +2,6 @@
 
 <!-- block content -->
 {% block content %}
-
 <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
   <div class="text-center pb-12">
     <h1
@@ -23,7 +22,6 @@
   >
     <!-- loop homeworks -->
     {% for homework in homeworks %}
-
     <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
       <div class="flex justify-center md:justify-end -mt-16">
         <img
@@ -46,7 +44,6 @@
         </a>
       </div>
     </div>
-
     <!-- endfor -->
     {% endfor %}
   </div>
@@ -82,6 +79,5 @@
   </div>
   {% endif %}
 </section>
-
 <!-- endblock -->
 {% endblock %}
