@@ -52,7 +52,7 @@ class HomeworkAdmin(admin.ModelAdmin):
     list_filter = (("course", admin.RelatedFieldListFilter),)
 
     def get_changeform_initial_data(self, request):
-        return {"name": "homework"}
+        return {"name": "Homework"}
 
 
 class Assignment(models.Model):
@@ -90,4 +90,4 @@ class AssignmentAdmin(admin.ModelAdmin):
     list_filter = (("homework", admin.RelatedFieldListFilter),)
 
     def get_changeform_initial_data(self, request):
-        return {"name": "assignment"}
+        return {"name": "Assignment"}

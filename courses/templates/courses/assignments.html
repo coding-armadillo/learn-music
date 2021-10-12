@@ -81,6 +81,37 @@
     <!-- endfor -->
     {% endfor %}
   </div>
+  {% if not assignments %}
+  <div class="container mx-auto text-center">
+    <div class="text-gray-600 font-light">
+      <h1
+        class="font-black uppercase text-3xl lg:text-5xl text-indigo-500 mb-10"
+      >
+        Assignments seem to be on the way!
+      </h1>
+      <p>Come back later for amazing materials.</p>
+    </div>
+    <div class="mb-20 md:mb-0">
+      <a
+        href="{% url 'courses:courses' %}"
+        class="
+          button
+          text-lg
+          font-light
+          outline-none
+          focus:outline-none
+          transform
+          transition-all
+          hover:scale-110
+          text-indigo-500
+          hover:text-indigo-600
+        "
+      >
+        Go Back
+      </a>
+    </div>
+  </div>
+  {% endif %}
 </section>
 <!-- endblock -->
 {% endblock %}
