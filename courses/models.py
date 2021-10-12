@@ -8,6 +8,9 @@ class Course(models.Model):
     description = models.TextField(blank=True, null=True)
     image_url = models.URLField(blank=True, null=True)
 
+    class Meta:
+        ordering = ("name",)
+
     def __str__(self):
         return self.code.upper()
 
@@ -15,6 +18,9 @@ class Course(models.Model):
 class Song(models.Model):
     name = models.CharField(max_length=200)
     upload = models.FileField(upload_to="uploads/")
+
+    class Meta:
+        ordering = ("name",)
 
     def __str__(self):
         return self.name
@@ -31,6 +37,12 @@ class Homework(models.Model):
         blank=True,
         null=True,
     )
+
+    class Meta:
+        ordering = (
+            "course__name",
+            "name",
+        )
 
     def __str__(self):
         return f"{self.course}-{self.name}"
@@ -62,6 +74,13 @@ class Assignment(models.Model):
         blank=True,
         null=True,
     )
+
+    class Meta:
+        ordering = (
+            "homework__course__name",
+            "homework__name",
+            "name",
+        )
 
     def __str__(self):
         return f"{self.homework}-{self.name}"
