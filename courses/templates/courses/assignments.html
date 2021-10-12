@@ -48,10 +48,7 @@
         {% if assignment.song %}
         <div class="flex items-center justify-center mt-4">
           <audio controls>
-            <source
-              src="{{ MEDIA_URL }}/{{ assignment.song.upload }}"
-              type="audio/mpeg"
-            />
+            <source src="{{ assignment.song.upload.url }}" type="audio/mpeg" />
           </audio>
         </div>
         {% endif %}
