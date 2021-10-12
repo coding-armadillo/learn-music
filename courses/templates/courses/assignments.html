@@ -24,9 +24,18 @@
     {% for assignment in assignments %}
     <div class="w-full px-4 py-3 bg-white shadow-md rounded-md my-8">
       <div class="flex justify-between items-center">
-        <span class="text-sm font-light text-gray-800"
-          >{{ assignment.song.name }}</span
-        >
+        <span
+          class="
+            font-light
+            text-lg
+            bg-green-200
+            text-green-800
+            rounded-full
+            px-3
+            py-1
+          "
+          >{{ assignment.song.name }}
+        </span>
         <span
           class="
             bg-indigo-200
@@ -37,8 +46,8 @@
             uppercase
             text-xs
           "
-          >{{ assignment.name }}</span
-        >
+          >{{ assignment.name }}
+        </span>
       </div>
 
       <div>
