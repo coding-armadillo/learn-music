@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.db import models
 
 
@@ -35,6 +36,13 @@ class Homework(models.Model):
         return f"{self.course}-{self.name}"
 
 
+class HomeworkAdmin(admin.ModelAdmin):
+    list_filter = (("course", admin.RelatedFieldListFilter),)
+
+    def get_changeform_initial_data(self, request):
+        return {"name": "homework"}
+
+
 class Assignment(models.Model):
     name = models.CharField(max_length=200)
     text = models.CharField(
@@ -57,3 +65,10 @@ class Assignment(models.Model):
 
     def __str__(self):
         return f"{self.homework}-{self.name}"
+
+
+class AssignmentAdmin(admin.ModelAdmin):
+    list_filter = (("homework", admin.RelatedFieldListFilter),)
+
+    def get_changeform_initial_data(self, request):
+        return {"name": "assignment"}
