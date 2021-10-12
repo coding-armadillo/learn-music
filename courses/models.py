@@ -57,7 +57,7 @@ class HomeworkAdmin(admin.ModelAdmin):
 
 class Assignment(models.Model):
     name = models.CharField(max_length=200)
-    text = models.CharField(
+    text = models.TextField(
         max_length=200,
         blank=True,
         null=True,
