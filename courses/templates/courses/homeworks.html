@@ -31,16 +31,18 @@
       </div>
       <div>
         <h2 class="text-gray-800 text-3xl font-semibold">
-          {{ homework.name }}
+          {{ homework.name|title }}
         </h2>
-        <p class="mt-2 text-gray-600">{{ homework.description }}</p>
+        <p class="mt-2 text-gray-600">
+          {{ homework.description|default:"Welcome to homework" }}
+        </p>
       </div>
       <div class="flex justify-end mt-4">
         <a
           href="{% url 'courses:assignments' course.code homework.name %}"
           class="text-xl font-medium text-indigo-500"
         >
-          Go to {{ homework.name }}
+          Go to {{ homework.name|title }}
         </a>
       </div>
     </div>
