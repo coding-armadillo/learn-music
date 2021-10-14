@@ -2,7 +2,7 @@
 
 ## Credits
 
-- [Logo][1] by [Swifticons][2]
+- [Logo][1] by [Maurilio Monsù][2]
 
-[1]: https://www.iconfinder.com/icons/1826207/brand_logo_music_network_social_icon
-[2]: https://www.iconfinder.com/swifticons
+[1]: https://www.iconfinder.com/icons/3116880/design_material_music_audio_media_play_square_icon
+[2]: https://www.iconfinder.com/maurilio94
