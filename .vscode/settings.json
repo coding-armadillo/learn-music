@@ -8,7 +8,6 @@
   "workbench.iconTheme": "vscode-icons",
   "workbench.productIconTheme": "material-product-icons",
   "python.linting.pylintEnabled": true,
-  "python.linting.pylintUseMinimalCheckers": false,
   "python.linting.pylintPath": "pylint",
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "black",
