@@ -1,5 +1,34 @@
 # learn-music
 
+## Getting Started
+
+### Install
+
+```zsh
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Use `pip install -r requirements-dev.txt` for development. It will install `pylint` and `black` to enable linting and auto-formatting.
+
+### Setup
+
+Create a `.env` file to configure the AWS S3 bucket
+
+```zsh
+touch .env
+```
+
+And put down the the following information
+
+```
+AWS_ACCESS_KEY_ID=...
+AWS_SECRET_ACCESS_KEY=...
+AWS_STORAGE_BUCKET_NAME=...
+AWS_S3_REGION_NAME=...
+```
+
 ## Credits
 
 - [Logo][1] by [Maurilio Monsù][2]
