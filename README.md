@@ -1,3 +1,7 @@
+<div align="center">
+    <img src="https://cdn1.iconfinder.com/data/icons/material-apps/512/icon-music-material-design-512.png" alt="logo" height="196">
+</div>
+
 # learn-music
 
 ## Getting Started
