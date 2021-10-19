@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.db import models
+from django import forms
 
 
 class Course(models.Model):
@@ -19,11 +20,22 @@ class Song(models.Model):
     name = models.CharField(max_length=200)
     upload = models.FileField(upload_to="uploads/")
 
+    course = models.ForeignKey(
+        "Course",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
+
     class Meta:
         ordering = ("name",)
 
     def __str__(self):
         return self.name
+
+
+class SongAdmin(admin.ModelAdmin):
+    list_filter = (("course", admin.RelatedFieldListFilter),)
 
 
 class Homework(models.Model):
