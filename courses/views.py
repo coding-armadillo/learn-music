@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.shortcuts import render
 from django.http.response import HttpResponseServerError
 
@@ -14,6 +15,30 @@ def courses(request):
         "courses/courses.html",
         {
             "courses": models.Course.objects.all(),
+        },
+    )
+
+
+def songs(request, code):
+    try:
+        course = models.Course.objects.get(code=code)
+    except models.Course.DoesNotExist:
+        return HttpResponseServerError()
+
+    return render(
+        request,
+        "courses/songs.html",
+        {
+            "songs": (
+                models.Assignment.objects.values("song__name")
+                .annotate(number_of_practices=Count("id"))
+                .order_by()
+                .filter(
+                    homework__course=course,
+                    song__name__isnull=False,
+                )
+            ),
+            "course": course,
         },
     )
 

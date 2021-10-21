@@ -1,0 +1,83 @@
+{% extends "courses/base.html" %}
+
+<!-- block content -->
+{% block content %}
+<table class="items-center bg-transparent w-full border-collapse">
+  <thead>
+    <tr>
+      <th
+        class="
+          px-6
+          bg-blueGray-50
+          text-blueGray-500
+          align-middle
+          border border-solid border-blueGray-100
+          py-3
+          text-xs
+          uppercase
+          border-l-0 border-r-0
+          whitespace-nowrap
+          font-semibold
+          text-left
+        "
+      >
+        Song
+      </th>
+      <th
+        class="
+          px-6
+          bg-blueGray-50
+          text-blueGray-500
+          align-middle
+          border border-solid border-blueGray-100
+          py-3
+          text-xs
+          uppercase
+          border-l-0 border-r-0
+          whitespace-nowrap
+          font-semibold
+          text-left
+        "
+      >
+        # of Practices
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- loop assignments -->
+    {% for song in songs %}
+    <tr>
+      <td
+        class="
+          border-t-0
+          px-6
+          align-middle
+          border-l-0 border-r-0
+          text-xs
+          whitespace-nowrap
+          p-4
+          text-left
+        "
+      >
+        {{ song.song__name }}
+      </td>
+      <td
+        class="
+          border-t-0
+          px-6
+          align-middle
+          border-l-0 border-r-0
+          text-xs
+          whitespace-nowrap
+          p-4
+        "
+      >
+        {{ song.number_of_practices}}
+      </td>
+    </tr>
+    <!-- endfor -->
+    {% endfor %}
+  </tbody>
+</table>
+<!-- endblock -->
+{% endblock %}

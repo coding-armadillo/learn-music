@@ -19,12 +19,17 @@ urlpatterns = [
         name="courses",
     ),
     path(
-        "course/<str:code>/",
+        "songs/<str:code>/",
+        views.songs,
+        name="songs",
+    ),
+    path(
+        "homeworks/<str:code>/",
         views.homeworks,
         name="homeworks",
     ),
     path(
-        "course/<str:code>/<str:name>",
+        "assignments/<str:code>/<str:name>/",
         views.assignments,
         name="assignments",
     ),
