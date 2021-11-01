@@ -4,6 +4,8 @@
 
 # learn-music
 
+A Django app to help with music courses' homework
+
 ## Getting Started
 
 ### Install
