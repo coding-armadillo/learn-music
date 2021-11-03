@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.db import models
-from django import forms
 
 
 class Course(models.Model):
@@ -103,3 +102,20 @@ class AssignmentAdmin(admin.ModelAdmin):
 
     def get_changeform_initial_data(self, request):
         return {"name": "Assignment"}
+
+
+class AccessCode(models.Model):
+    code = models.CharField(max_length=50, unique=True)
+    student = models.CharField(max_length=50)
+    course = models.ForeignKey(
+        "Course",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
+
+    class Meta:
+        ordering = ("course__name", "code")
+
+    def __str__(self):
+        return f"{self.course}-{self.student}"
