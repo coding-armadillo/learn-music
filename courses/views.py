@@ -105,6 +105,7 @@ def courses(request):
     )
 
 
+@verify
 def songs(request, code):
     try:
         course = models.Course.objects.get(code=code)
