@@ -1,4 +1,4 @@
 -r requirements.txt
 black==21.10b0
-pip-check-updates==0.6.0
+pip-check-updates==0.6.1
 pylint==2.11.1
