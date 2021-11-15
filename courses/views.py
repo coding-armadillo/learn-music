@@ -137,14 +137,19 @@ def homeworks(request, code):
     except models.Course.DoesNotExist:
         return HttpResponseServerError()
 
+    order_by = request.GET.get("order_by", "name")
+    if order_by not in ("name", "-name"):
+        order_by = "name"
+
     return render(
         request,
         "courses/homeworks.html",
         {
             "homeworks": models.Homework.objects.filter(course=course)
-            .order_by("name")
+            .order_by(order_by)
             .all(),
             "course": course,
+            "flip_order": "-" if order_by == "name" else "",
         },
     )
 
