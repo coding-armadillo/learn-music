@@ -115,7 +115,7 @@ def songs(request, code):
     aggregation = (
         models.Assignment.objects.values("song__id")
         .annotate(number_of_practices=Count("id"))
-        .order_by("-number_of_practices")
+        .order_by()
         .filter(
             homework__course=course,
             song__name__isnull=False,
