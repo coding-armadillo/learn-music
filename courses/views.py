@@ -112,19 +112,29 @@ def songs(request, code):
     except models.Course.DoesNotExist:
         return HttpResponseServerError()
 
+    aggregation = (
+        models.Assignment.objects.values("song__id")
+        .annotate(number_of_practices=Count("id"))
+        .order_by("-number_of_practices")
+        .filter(
+            homework__course=course,
+            song__name__isnull=False,
+        )
+    )
+
+    songs = []
+    for aggr in aggregation:
+        song = {
+            "song": models.Song.objects.get(id=aggr["song__id"]),
+            "number_of_practices": aggr["number_of_practices"],
+        }
+        songs.append(song)
+
     return render(
         request,
         "courses/songs.html",
         {
-            "songs": (
-                models.Assignment.objects.values("song__name")
-                .annotate(number_of_practices=Count("id"))
-                .order_by()
-                .filter(
-                    homework__course=course,
-                    song__name__isnull=False,
-                )
-            ),
+            "songs": songs,
             "course": course,
         },
     )
