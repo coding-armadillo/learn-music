@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "coenraads.bracket-pair-colorizer",
     "davidanson.vscode-markdownlint",
     "esbenp.prettier-vscode",
     "ms-vscode.wordcount",
