@@ -147,7 +147,7 @@ def homeworks(request, code):
     except models.Course.DoesNotExist:
         return HttpResponseServerError()
 
-    flip_order_by_name = request.session[f"{code}_flip_order_by_name"]
+    flip_order_by_name = request.session.get(f"{code}_flip_order_by_name", False)
 
     if flip_order_by_name:
         order_by = "-name"
