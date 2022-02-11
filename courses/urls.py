@@ -43,4 +43,9 @@ urlpatterns = [
         views.logout,
         name="logout",
     ),
+    path(
+        "config/<str:code>/",
+        views.config,
+        name="config",
+    ),
 ]

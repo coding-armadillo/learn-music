@@ -12,3 +12,11 @@ class LoginForm(forms.Form):
             }
         ),
     )
+
+
+class ConfigForm(forms.Form):
+    flip_order_by_name = forms.BooleanField(
+        label="Flip order by name",
+        required=False,
+        initial=False,
+    )

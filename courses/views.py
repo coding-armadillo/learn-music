@@ -6,7 +6,7 @@ from django.db.models import Count
 from django.shortcuts import render, redirect, reverse
 from django.http.response import HttpResponseServerError
 
-from .forms import LoginForm
+from .forms import ConfigForm, LoginForm
 from . import models
 
 
@@ -147,8 +147,11 @@ def homeworks(request, code):
     except models.Course.DoesNotExist:
         return HttpResponseServerError()
 
-    order_by = request.GET.get("order_by", "name")
-    if order_by not in ("name", "-name"):
+    flip_order_by_name = request.session[f"{code}_flip_order_by_name"]
+
+    if flip_order_by_name:
+        order_by = "-name"
+    else:
         order_by = "name"
 
     return render(
@@ -159,7 +162,6 @@ def homeworks(request, code):
             .order_by(order_by)
             .all(),
             "course": course,
-            "flip_order": "-" if order_by == "name" else "",
         },
     )
 
@@ -185,3 +187,28 @@ def assignments(request, code, name):
 
 def contact_us(request):
     return render(request, "courses/contact_us.html")
+
+
+@verify
+def config(request, code):
+    if request.method == "POST":
+        form = ConfigForm(request.POST)
+
+        if form.is_valid():
+            flip_order_by_name = form.cleaned_data.get("flip_order_by_name")
+            request.session[f"{code}_flip_order_by_name"] = flip_order_by_name
+
+            request.session.modified = True
+
+        return redirect(reverse("courses:homeworks", kwargs={"code": code}))
+
+    data = {
+        "flip_order_by_name": request.session.get(f"{code}_flip_order_by_name", False),
+    }
+    form = ConfigForm(data)
+
+    return render(
+        request,
+        "courses/config.html",
+        {"form": form, "code": code},
+    )
