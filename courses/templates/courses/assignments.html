@@ -6,14 +6,7 @@
   <div class="container mx-auto text-center">
     <div class="text-center pb-12">
       <h1
-        class="
-          font-bold
-          text-3xl
-          md:text-4xl
-          lg:text-5xl
-          font-heading
-          text-gray-900
-        "
+        class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900"
       >
         {{ homework }}
       </h1>
@@ -24,43 +17,19 @@
       <div class="flex justify-between items-center">
         {% if assignment.song %}
         <span
-          class="
-            font-light
-            text-md
-            bg-green-200
-            text-green-800
-            rounded-full
-            px-3
-            py-1
-          "
+          class="font-light text-md bg-green-200 text-green-800 rounded-full px-3 py-1"
         >
           {{ assignment.song.name }}
         </span>
         {% else %}
         <span
-          class="
-            font-light
-            text-md
-            bg-gray-400
-            text-gray-800
-            rounded-full
-            px-3
-            py-1
-          "
+          class="font-light text-md bg-gray-400 text-gray-800 rounded-full px-3 py-1"
         >
           Workbook
         </span>
         {% endif %}
         <span
-          class="
-            bg-indigo-200
-            text-indigo-800
-            px-3
-            py-1
-            rounded-full
-            uppercase
-            text-xs
-          "
+          class="bg-indigo-200 text-indigo-800 px-3 py-1 rounded-full uppercase text-xs"
         >
           {{ assignment.name }}
         </span>
@@ -94,18 +63,7 @@
     <div class="mb-20 md:mb-0">
       <a
         href="{% url 'courses:homeworks' homework.course.code %}"
-        class="
-          button
-          text-lg
-          font-light
-          outline-none
-          focus:outline-none
-          transform
-          transition-all
-          hover:scale-110
-          text-indigo-500
-          hover:text-indigo-600
-        "
+        class="button text-lg font-light outline-none focus:outline-none transform transition-all hover:scale-110 text-indigo-500 hover:text-indigo-600"
       >
         Go Back
       </a>
