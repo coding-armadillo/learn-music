@@ -15,9 +15,28 @@ class Course(models.Model):
         return self.code.upper()
 
 
+class Album(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
+    image_url = models.URLField(blank=True, null=True)
+
+    class Meta:
+        ordering = ("name",)
+
+    def __str__(self):
+        return self.name
+
+
 class Song(models.Model):
     name = models.CharField(max_length=200)
     upload = models.FileField(upload_to="uploads/")
+
+    album = models.ForeignKey(
+        Album,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
 
     course = models.ForeignKey(
         "Course",
@@ -34,7 +53,10 @@ class Song(models.Model):
 
 
 class SongAdmin(admin.ModelAdmin):
-    list_filter = (("course", admin.RelatedFieldListFilter),)
+    list_filter = (
+        ("course", admin.RelatedFieldListFilter),
+        ("album", admin.RelatedFieldListFilter),
+    )
 
 
 class Homework(models.Model):
@@ -102,6 +124,11 @@ class AssignmentAdmin(admin.ModelAdmin):
 
     def get_changeform_initial_data(self, request):
         return {"name": "Assignment"}
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "homework":
+            kwargs["queryset"] = Homework.objects.all().order_by("-name")
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
 class AccessCode(models.Model):
