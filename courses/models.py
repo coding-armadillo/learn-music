@@ -24,7 +24,7 @@ class Album(models.Model):
         ordering = ("name",)
 
     def __str__(self):
-        return self.name
+        return f"{self.name}"
 
 
 class Song(models.Model):
@@ -49,7 +49,7 @@ class Song(models.Model):
         ordering = ("name",)
 
     def __str__(self):
-        return self.name
+        return f"{self.name}"
 
 
 class SongAdmin(admin.ModelAdmin):
