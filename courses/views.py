@@ -96,11 +96,28 @@ def index(request):
 
 
 def courses(request):
+    cards = []
+    default_img_url = (
+        "https://cdn4.iconfinder.com/data/icons/common-toolbar/36/Help-2-512.png"
+    )
+    for course in models.Course.objects.all():
+        cards.append(
+            {
+                "image_url": course.image_url or default_img_url,
+                "description": course.description or "Welcome to class",
+                "name": course.name,
+                "url": reverse("courses:homeworks", kwargs={"code": course.code}),
+                "link_text": course.code.upper(),
+            }
+        )
     return render(
         request,
         "courses/courses.html",
         {
-            "courses": models.Course.objects.all(),
+            "title": "Check our awesome courses",
+            "subtitle": "We may have the best music education",
+            "cards": cards,
+            "null_link": reverse("courses:index"),
         },
     )
 
@@ -154,14 +171,34 @@ def homeworks(request, code):
     else:
         order_by = "name"
 
+    cards = []
+    default_img_url = "https://cdn3.iconfinder.com/data/icons/flat-office-icons-1/140/Artboard_1-10-512.png"
+    for homework in (
+        models.Homework.objects.filter(course=course).order_by(order_by).all()
+    ):
+        cards.append(
+            {
+                "image_url": homework.image_url or default_img_url,
+                "description": homework.description or "Welcome to homework",
+                "name": homework.name.capitalize(),
+                "url": reverse(
+                    "courses:assignments",
+                    kwargs={"code": course.code, "name": homework.name},
+                ),
+                "link_text": homework.name.capitalize(),
+            }
+        )
+
     return render(
         request,
         "courses/homeworks.html",
         {
-            "homeworks": models.Homework.objects.filter(course=course)
-            .order_by(order_by)
-            .all(),
-            "course": course,
+            "title": course.name,
+            "subtitle": None,
+            "cards": cards,
+            "null_link": reverse("courses:courses"),
+            "config_url": reverse("courses:config", kwargs={"code": course.code}),
+            "songs_url": reverse("courses:songs", kwargs={"code": course.code}),
         },
     )
 
