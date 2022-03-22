@@ -19,7 +19,12 @@ urlpatterns = [
         name="courses",
     ),
     path(
-        "songs/<str:code>/",
+        "albums/<str:code>/",
+        views.albums,
+        name="albums",
+    ),
+    path(
+        "songs/<str:code>/<str:album_name>/",
         views.songs,
         name="songs",
     ),

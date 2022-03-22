@@ -123,7 +123,48 @@ def courses(request):
 
 
 @verify
-def songs(request, code):
+def albums(request, code):
+    try:
+        course = models.Course.objects.get(code=code)
+    except models.Course.DoesNotExist:
+        return HttpResponseServerError()
+
+    cards = []
+    album_ids = (
+        models.Song.objects.filter(course=course)
+        .values_list("album__id", flat=True)
+        .distinct()
+    )
+    default_img_url = (
+        "https://cdn0.iconfinder.com/data/icons/music-231/48/Music-02-512.png"
+    )
+    for album in models.Album.objects.filter(id__in=album_ids):
+        cards.append(
+            {
+                "image_url": album.image_url or default_img_url,
+                "description": album.description,
+                "name": album.name,
+                "url": reverse(
+                    "courses:songs", kwargs={"code": code, "album_name": album.name}
+                ),
+                "link_text": album.name,
+            }
+        )
+
+    return render(
+        request,
+        "courses/albums.html",
+        {
+            "title": "Check our awesome albums",
+            "subtitle": "We may have the best music education",
+            "cards": cards,
+            "null_link": reverse("courses:index"),
+        },
+    )
+
+
+@verify
+def songs(request, code, album_name):
     try:
         course = models.Course.objects.get(code=code)
     except models.Course.DoesNotExist:
@@ -132,11 +173,12 @@ def songs(request, code):
     aggregation = (
         models.Assignment.objects.values("song__id")
         .annotate(number_of_practices=Count("id"))
-        .order_by()
         .filter(
             homework__course=course,
             song__name__isnull=False,
+            song__album__name=album_name,
         )
+        .order_by("-number_of_practices")
     )
 
     songs = []
@@ -198,7 +240,7 @@ def homeworks(request, code):
             "cards": cards,
             "null_link": reverse("courses:courses"),
             "config_url": reverse("courses:config", kwargs={"code": course.code}),
-            "songs_url": reverse("courses:songs", kwargs={"code": course.code}),
+            "albums_url": reverse("courses:albums", kwargs={"code": course.code}),
         },
     )
 
