@@ -26,13 +26,13 @@ class Command(BaseCommand):
             version_numbers[0] = version_numbers[0] + 1
             version_numbers[1] = 0
             version_numbers[2] = 0
-
-        if options["ver"] == "minor":
+        elif options["ver"] == "minor":
             version_numbers[1] = version_numbers[1] + 1
             version_numbers[2] = 0
-
-        if options["ver"] == "patch":
+        elif options["ver"] == "patch":
             version_numbers[2] = version_numbers[2] + 1
+        else:
+            raise ValueError("Invalid release type")
 
         new_ver = ".".join([str(v) for v in version_numbers])
 
