@@ -155,8 +155,8 @@ def albums(request, code):
         request,
         "courses/albums.html",
         {
-            "title": "Check our awesome albums",
-            "subtitle": "We may have the best music education",
+            "title": f"Check the awesome album{'s' if len(cards) > 1 else ''} of {course.name}",
+            "subtitle": None,
             "cards": cards,
             "null_link": reverse("courses:index"),
         },
