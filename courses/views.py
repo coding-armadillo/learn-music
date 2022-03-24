@@ -163,7 +163,7 @@ def albums(request, code):
         request,
         "courses/albums.html",
         {
-            "title": f"Check the awesome album{'s' if len(cards) > 1 else ''} of {course.name}",
+            "title": f"Check the awesome album{'s' if len(cards) > 1 else ''} of {course.code}",
             "subtitle": None,
             "cards": cards,
             "null_link": reverse("courses:index"),
@@ -203,6 +203,7 @@ def songs(request, code, album_name):
         {
             "songs": songs,
             "course": course,
+            "album_name": album_name,
         },
     )
 

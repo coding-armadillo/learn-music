@@ -8,8 +8,11 @@
       <h1
         class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900"
       >
-        {{ homework }}
+        {{ homework.course.code }}
       </h1>
+      <h2 class="text-base py-2 font-bold text-indigo-600">
+        {{ homework.name }}
+      </h2>
     </div>
     <!-- loop assignments -->
     {% for assignment in assignments %}
