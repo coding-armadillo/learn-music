@@ -101,10 +101,14 @@ def courses(request):
         "https://cdn4.iconfinder.com/data/icons/common-toolbar/36/Help-2-512.png"
     )
     for course in models.Course.objects.all():
+        description = course.description
+        if not description:
+            num_homeworks = models.Homework.objects.filter(course=course).count()
+            description = f"{num_homeworks} Homework{'s' if num_homeworks > 1 else ''}"
         cards.append(
             {
                 "image_url": course.image_url or default_img_url,
-                "description": course.description or "Welcome to class",
+                "description": description,
                 "name": course.name,
                 "url": reverse("courses:homeworks", kwargs={"code": course.code}),
                 "link_text": course.code.upper(),
@@ -139,10 +143,14 @@ def albums(request, code):
         "https://cdn0.iconfinder.com/data/icons/music-231/48/Music-02-512.png"
     )
     for album in models.Album.objects.filter(id__in=album_ids):
+        description = album.description
+        if not description:
+            num_songs = models.Song.objects.filter(album=album).count()
+            description = f"{num_songs} Song{'s' if num_songs > 1 else ''}"
         cards.append(
             {
                 "image_url": album.image_url or default_img_url,
-                "description": album.description,
+                "description": description,
                 "name": album.name,
                 "url": reverse(
                     "courses:songs", kwargs={"code": code, "album_name": album.name}
@@ -218,10 +226,18 @@ def homeworks(request, code):
     for homework in (
         models.Homework.objects.filter(course=course).order_by(order_by).all()
     ):
+        description = homework.description
+        if not description:
+            num_assignments = models.Assignment.objects.filter(
+                homework=homework
+            ).count()
+            description = (
+                f"{num_assignments} Assignment{'s' if num_assignments > 1 else ''}"
+            )
         cards.append(
             {
                 "image_url": homework.image_url or default_img_url,
-                "description": homework.description or "Welcome to homework",
+                "description": description,
                 "name": homework.name.capitalize(),
                 "url": reverse(
                     "courses:assignments",
