@@ -17,6 +17,7 @@
       rel="apple-touch-icon"
       href="https://cdn1.iconfinder.com/data/icons/material-apps/512/icon-music-material-design-512.png"
     />
+    {% include "courses/js/notification.js" %}
   </head>
   <body>
     <div class="min-h-screen flex flex-col">
@@ -57,6 +58,33 @@
           </section>
         </div>
       </div>
+      {% if messages %}
+      <div class="text-center">
+        <ul class="delete">
+          {% for message in messages %}
+          <!-- error -->
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+          <div
+            class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4"
+            role="alert"
+          >
+            <p class="font-bold">Error</p>
+            <p>{{ message }}</p>
+          </div>
+          {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+          <div
+            class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4"
+            role="alert"
+          >
+            <p class="font-bold">Success</p>
+            <p>{{ message }}</p>
+          </div>
+          {% endif %}
+          <!-- endfor -->
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
       <div class="bg-gray-100 p-6 flex-grow">
         {% block content %}{% endblock %}
       </div>

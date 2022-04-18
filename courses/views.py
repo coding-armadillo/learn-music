@@ -1,7 +1,7 @@
 import functools
 import urllib.parse as urlparse
 
-
+from django.contrib import messages
 from django.db.models import Count
 from django.shortcuts import render, redirect, reverse
 from django.http.response import HttpResponseServerError
@@ -75,6 +75,7 @@ def login(request):
                     reverse("courses:homeworks", kwargs={"code": course_code})
                 )
 
+            messages.add_message(request, messages.ERROR, "You are not authorized.")
             return redirect(reverse("courses:courses"))
 
     form = LoginForm()
@@ -296,6 +297,7 @@ def config(request, code):
 
             request.session.modified = True
 
+        messages.add_message(request, messages.SUCCESS, "Your configuration is saved.")
         return redirect(reverse("courses:homeworks", kwargs={"code": code}))
 
     data = {
