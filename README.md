@@ -11,8 +11,8 @@ A Django app to help with music homework
 ### Install
 
 ```zsh
-python -m venv venv
-source venv/bin/activate
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
