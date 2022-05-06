@@ -270,6 +270,8 @@ def assignments(request, code, name):
     except models.homework.DoesNotExist:
         return HttpResponseServerError()
 
+    show_solfege = request.session.get(f"{code}_show_solfege", True)
+
     return render(
         request,
         "courses/assignments.html",
@@ -278,6 +280,7 @@ def assignments(request, code, name):
             .order_by("name")
             .all(),
             "homework": homework,
+            "show_solfege": show_solfege,
         },
     )
 
@@ -293,7 +296,10 @@ def config(request, code):
 
         if form.is_valid():
             flip_order_by_name = form.cleaned_data.get("flip_order_by_name")
+            show_solfege = form.cleaned_data.get("show_solfege")
+
             request.session[f"{code}_flip_order_by_name"] = flip_order_by_name
+            request.session[f"{code}_show_solfege"] = show_solfege
 
             request.session.modified = True
 
@@ -302,6 +308,7 @@ def config(request, code):
 
     data = {
         "flip_order_by_name": request.session.get(f"{code}_flip_order_by_name", True),
+        "show_solfege": request.session.get(f"{code}_show_solfege", True),
     }
     form = ConfigForm(data)
 

@@ -18,5 +18,11 @@ class ConfigForm(forms.Form):
     flip_order_by_name = forms.BooleanField(
         label="Flip order by name",
         required=False,
-        initial=False,
+        initial=True,
+    )
+
+    show_solfege = forms.BooleanField(
+        label="Show solfege",
+        required=False,
+        initial=True,
     )
