@@ -216,7 +216,7 @@ def homeworks(request, code):
     except models.Course.DoesNotExist:
         return HttpResponseServerError()
 
-    flip_order_by_name = request.session.get(f"{code}_flip_order_by_name", False)
+    flip_order_by_name = request.session.get(f"{code}_flip_order_by_name", True)
 
     if flip_order_by_name:
         order_by = "-name"
@@ -301,7 +301,7 @@ def config(request, code):
         return redirect(reverse("courses:homeworks", kwargs={"code": code}))
 
     data = {
-        "flip_order_by_name": request.session.get(f"{code}_flip_order_by_name", False),
+        "flip_order_by_name": request.session.get(f"{code}_flip_order_by_name", True),
     }
     form = ConfigForm(data)
 
