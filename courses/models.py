@@ -134,7 +134,7 @@ class AssignmentAdmin(admin.ModelAdmin):
 
 
 class AccessCode(models.Model):
-    code = models.CharField(max_length=50, unique=True)
+    code = models.CharField(max_length=50)
     student = models.CharField(max_length=50)
     course = models.ForeignKey(
         "Course",
@@ -145,6 +145,7 @@ class AccessCode(models.Model):
 
     class Meta:
         ordering = ("course__name", "code")
+        unique_together = ["course", "code"]
 
     def __str__(self):
         return f"{self.course}-{self.student}"
