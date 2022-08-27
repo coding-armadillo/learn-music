@@ -1,0 +1,23 @@
+name: pcu
+on:
+  schedule:
+    - cron: "20 * * * *"
+jobs:
+  createPullRequest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v2
+      - name: pip-check-updates
+        run: |
+          pip install pip-check-updates
+          pcu requirements-dev.txt -u
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: refresh deps
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: pcu-pr
+          title: "[pcu] Refresh Deps"
