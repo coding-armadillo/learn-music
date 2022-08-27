@@ -22,4 +22,5 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
           branch: pcu-pr
+          delete-branch: true
           title: "[pcu] Refresh Deps"
