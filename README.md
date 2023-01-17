@@ -4,6 +4,8 @@
 
 # learn-music
 
+![coding_style](https://img.shields.io/badge/code%20style-black-000000.svg)
+
 A Django app to help with music homework
 
 ## Getting Started
