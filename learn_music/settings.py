@@ -42,6 +42,7 @@ ALLOWED_HOSTS = [
     ".herokuapp.com",
     ".fly.dev",
 ]
+CSRF_TRUSTED_ORIGINS = ["https://*.fly.dev"]
 
 
 # Application definition
