@@ -217,6 +217,7 @@ def homeworks(request, code):
         return HttpResponseServerError()
 
     flip_order_by_name = request.session.get(f"{code}_flip_order_by_name", True)
+    show_num_assignments = request.session.get(f"{code}_show_num_assignments", True)
 
     if flip_order_by_name:
         order_by = "-name"
@@ -229,13 +230,13 @@ def homeworks(request, code):
         models.Homework.objects.filter(course=course).order_by(order_by).all()
     ):
         description = homework.description
-        if not description:
+        if show_num_assignments:
             num_assignments = models.Assignment.objects.filter(
                 homework=homework
             ).count()
             description = (
-                f"{num_assignments} Assignment{'s' if num_assignments > 1 else ''}"
-            )
+                f"{num_assignments} Assignment{'s' if num_assignments > 1 else ''}\n\n"
+            ) + description
         cards.append(
             {
                 "image_url": homework.image_url or default_img_url,
@@ -297,8 +298,10 @@ def config(request, code):
         if form.is_valid():
             flip_order_by_name = form.cleaned_data.get("flip_order_by_name")
             show_solfege = form.cleaned_data.get("show_solfege")
+            show_num_assignments = form.cleaned_data.get("show_num_assignments")
 
             request.session[f"{code}_flip_order_by_name"] = flip_order_by_name
+            request.session[f"{code}_show_num_assignments"] = show_num_assignments
             request.session[f"{code}_show_solfege"] = show_solfege
 
             request.session.modified = True
@@ -307,8 +310,17 @@ def config(request, code):
         return redirect(reverse("courses:homeworks", kwargs={"code": code}))
 
     data = {
-        "flip_order_by_name": request.session.get(f"{code}_flip_order_by_name", True),
-        "show_solfege": request.session.get(f"{code}_show_solfege", True),
+        "flip_order_by_name": request.session.get(
+            f"{code}_flip_order_by_name",
+            True,
+        ),
+        "show_num_assignments": request.session.get(
+            f"{code}_show_num_assignments", True
+        ),
+        "show_solfege": request.session.get(
+            f"{code}_show_solfege",
+            True,
+        ),
     }
     form = ConfigForm(data)
 

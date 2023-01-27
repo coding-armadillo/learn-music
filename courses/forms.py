@@ -21,6 +21,12 @@ class ConfigForm(forms.Form):
         initial=True,
     )
 
+    show_num_assignments = forms.BooleanField(
+        label="Show number of assignments",
+        required=False,
+        initial=True,
+    )
+
     show_solfege = forms.BooleanField(
         label="Show solfege",
         required=False,
