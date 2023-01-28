@@ -2,3 +2,6 @@
 *.sqlite3
 docs
 fly.toml
+mkdocs.yml
+requirements-dev.txt
+requirements-docs.txt

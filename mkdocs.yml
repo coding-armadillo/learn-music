@@ -1,0 +1,53 @@
+site_name: learn-music
+nav:
+  - Deploy: deploy.md
+  - Data: data.md
+theme:
+  name: material
+  favicon: https://cdn1.iconfinder.com/data/icons/material-apps/512/icon-music-material-design-512.png
+  logo: https://cdn1.iconfinder.com/data/icons/material-apps/512/icon-music-material-design-512.png
+  font:
+    text: Roboto
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+  features:
+    - header.autohide
+repo_name: coding-armadillo/learn-music
+repo_url: https://github.com/coding-armadillo/learn-music
+plugins:
+  - search
+  - tags
+  - glightbox:
+      auto_caption: True
+  - minify:
+      minify_html: true
+  - git-revision-date-localized:
+      type: date
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.emoji
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/coding-armadillo
