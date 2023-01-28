@@ -129,7 +129,9 @@ class AssignmentAdmin(admin.ModelAdmin):
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "homework":
-            kwargs["queryset"] = Homework.objects.all().order_by("-name")
+            kwargs["queryset"] = Homework.objects.all().order_by(
+                "-course__code", "-name"
+            )
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
