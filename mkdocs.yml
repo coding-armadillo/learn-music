@@ -1,5 +1,6 @@
 site_name: learn-music
 nav:
+  - Home: index.md
   - Deploy: deploy.md
   - Data: data.md
 theme:
