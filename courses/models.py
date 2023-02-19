@@ -9,7 +9,7 @@ class Course(models.Model):
     image_url = models.URLField(blank=True, null=True)
 
     class Meta:
-        ordering = ("name",)
+        ordering = ("-name",)
 
     def __str__(self):
         return self.code.upper()
@@ -75,8 +75,8 @@ class Homework(models.Model):
 
     class Meta:
         ordering = (
-            "course__name",
-            "name",
+            "-course__name",
+            "-name",
         )
 
     def __str__(self):
@@ -87,7 +87,14 @@ class HomeworkAdmin(admin.ModelAdmin):
     list_filter = (("course", admin.RelatedFieldListFilter),)
 
     def get_changeform_initial_data(self, request):
-        return {"name": "Homework"}
+        homework = Homework.objects.all().order_by("-course__code", "-name").first()
+        name = homework.name
+        try:
+            number = str(int(name[-2:]) + 1).zfill(2)
+        except:
+            number = ""
+        course = homework.course
+        return {"name": f"Homework{number}", "course": course}
 
 
 class Assignment(models.Model):
@@ -112,9 +119,9 @@ class Assignment(models.Model):
 
     class Meta:
         ordering = (
-            "homework__course__name",
-            "homework__name",
-            "name",
+            "-homework__course__name",
+            "-homework__name",
+            "-name",
         )
 
     def __str__(self):
@@ -125,7 +132,18 @@ class AssignmentAdmin(admin.ModelAdmin):
     list_filter = (("homework", admin.RelatedFieldListFilter),)
 
     def get_changeform_initial_data(self, request):
-        return {"name": "Assignment"}
+        assignment = (
+            Assignment.objects.all()
+            .order_by("-homework__course__code", "-homework__name", "-name")
+            .first()
+        )
+        name = assignment.name
+        try:
+            number = str(int(name[-2:]) + 1).zfill(2)
+        except:
+            number = ""
+        homework = assignment.homework
+        return {"name": f"Assignment{number}", "homework": homework}
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "homework":
