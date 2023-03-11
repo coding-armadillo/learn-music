@@ -34,13 +34,13 @@
           {{ song.number_of_practices}}
         </span>
       </div>
-      <div>
-        <div class="flex items-center justify-center mt-4">
-          <audio controls>
-            <source src="{{song.song.upload.url}}" type="audio/mpeg" />
-          </audio>
-        </div>
+      {% if song.song.upload %}
+      <div class="flex items-center justify-center mt-4">
+        <audio controls>
+          <source src="{{song.song.upload.url}}" type="audio/mpeg" />
+        </audio>
       </div>
+      {% endif %}
     </div>
     <!-- endfor -->
     {% endfor %}
