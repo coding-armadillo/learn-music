@@ -56,7 +56,7 @@
           </span>
           {% endif %}
         </h1>
-        {% if assignment.song %}
+        {% if assignment.song.upload %}
         <div class="flex items-center justify-center mt-4">
           <audio controls>
             <source src="{{ assignment.song.upload.url }}" type="audio/mpeg" />

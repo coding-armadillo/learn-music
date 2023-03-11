@@ -30,7 +30,7 @@ class Album(models.Model):
 
 class Song(models.Model):
     name = models.CharField(max_length=200)
-    upload = models.FileField(upload_to="uploads/")
+    upload = models.FileField(upload_to="uploads/", blank=True, null=True)
     gala_piece = models.BooleanField(default=False)
     solfege = models.TextField(blank=True, null=True)
 
