@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.db import models
+from tinymce.models import HTMLField
 
 
 class Course(models.Model):
@@ -99,7 +100,7 @@ class HomeworkAdmin(admin.ModelAdmin):
 
 class Assignment(models.Model):
     name = models.CharField(max_length=200)
-    text = models.TextField(
+    text = HTMLField(
         max_length=800,
         blank=True,
         null=True,

@@ -47,7 +47,7 @@
       </div>
       <div>
         <h1 class="text-lg font-semibold text-gray-800 mt-2">
-          {{ assignment.text|linebreaksbr }}
+          {{ assignment.text|safe }}
           <!-- show solfege -->
           {% if show_solfege and assignment.song.solfege %}
           <span class="text-xs text-gray-600">

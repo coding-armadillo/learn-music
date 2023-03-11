@@ -20,4 +20,5 @@ from django.urls import include, path
 urlpatterns = [
     path("", include(("courses.urls", "courses"), namespace="courses")),
     path("admin/", admin.site.urls),
+    path("tinymce/", include("tinymce.urls")),
 ]
