@@ -165,7 +165,7 @@ class AccessCode(models.Model):
     )
 
     class Meta:
-        ordering = ("course__name", "code")
+        ordering = ("-course__name", "code")
         unique_together = ["course", "code"]
 
     def __str__(self):
