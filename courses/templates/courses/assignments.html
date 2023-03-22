@@ -67,6 +67,42 @@
     </div>
     <!-- endfor -->
     {% endfor %}
+    <br />
+    <div class="flex justify-between items-center">
+      {% if newer %}
+      <a
+        href="{% url 'courses:assignments' code=homework.course.code name=newer %}"
+      >
+        <span class="font-light text-md bg-blue-200 text-blue-800 px-3 py-1">
+          Go to {{ newer }}
+        </span>
+      </a>
+      {% else %}
+      <span class="font-light text-md bg-yellow-200 text-yellow-800 px-3 py-1">
+        No more
+      </span>
+      {% endif %}
+
+      <a href="{% url 'courses:homeworks' code=homework.course.code %}">
+        <span class="font-light text-md bg-pink-200 text-pink-800 px-3 py-1">
+          Return to {{ homework.course.code|upper }}
+        </span>
+      </a>
+
+      {% if older %}
+      <a
+        href="{% url 'courses:assignments' code=homework.course.code name=older %}"
+      >
+        <span class="font-light text-md bg-blue-200 text-blue-800 px-3 py-1">
+          Go to {{ older }}
+        </span>
+      </a>
+      {% else %}
+      <span class="font-light text-md bg-yellow-200 text-yellow-800 px-3 py-1">
+        No more
+      </span>
+      {% endif %}
+    </div>
   </div>
   {% if not assignments %}
   <div class="container mx-auto text-center">

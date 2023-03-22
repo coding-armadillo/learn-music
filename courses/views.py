@@ -268,10 +268,23 @@ def homeworks(request, code):
 def assignments(request, code, name):
     try:
         homework = models.Homework.objects.get(course__code=code, name=name)
-    except models.homework.DoesNotExist:
+    except models.Homework.DoesNotExist:
         return HttpResponseServerError()
 
     show_solfege = request.session.get(f"{code}_show_solfege", True)
+
+    newer = "Homework" + f"{int(name[-2:])+1}".zfill(2)
+    older = "Homework" + f"{int(name[-2:])-1}".zfill(2)
+
+    try:
+        models.Homework.objects.get(course__code=code, name=newer)
+    except models.Homework.DoesNotExist:
+        newer = None
+
+    try:
+        models.Homework.objects.get(course__code=code, name=older)
+    except models.Homework.DoesNotExist:
+        older = None
 
     return render(
         request,
@@ -281,6 +294,8 @@ def assignments(request, code, name):
             .order_by("name")
             .all(),
             "homework": homework,
+            "newer": newer,
+            "older": older,
             "show_solfege": show_solfege,
         },
     )
