@@ -64,7 +64,7 @@ class SongAdmin(admin.ModelAdmin):
 
 class Homework(models.Model):
     name = models.CharField(max_length=200)
-    description = models.TextField(blank=True, null=True)
+    description = HTMLField(blank=True, null=True)
     image_url = models.URLField(blank=True, null=True)
 
     course = models.ForeignKey(

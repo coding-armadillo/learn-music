@@ -235,7 +235,7 @@ def homeworks(request, code):
                 homework=homework
             ).count()
             description = (
-                f"{num_assignments} Assignment{'s' if num_assignments > 1 else ''}\n\n"
+                f"<p>{num_assignments} Assignment{'s' if num_assignments > 1 else ''}<p><br/>"
             ) + description
         cards.append(
             {

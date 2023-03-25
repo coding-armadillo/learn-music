@@ -32,7 +32,7 @@
         <h2 class="text-gray-800 text-3xl font-semibold">
           <a href="{{ card.url }}"> {{ card.name }} </a>
         </h2>
-        <p class="mt-2 text-gray-600">{{ card.description|linebreaksbr }}</p>
+        <div class="mt-2 text-gray-600">{{ card.description|safe }}</div>
       </div>
       <div class="flex justify-end mt-4">
         <a href="{{ card.url }}" class="text-xl font-medium text-indigo-500">
