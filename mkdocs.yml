@@ -24,13 +24,15 @@ theme:
         name: Switch to light mode
   features:
     - header.autohide
-repo_name: coding-armadillo/learn-music
+    - content.code.copy
+    - navigation.top
+repo_name: learn-music
 repo_url: https://github.com/coding-armadillo/learn-music
 plugins:
   - search
   - tags
   - glightbox:
-      auto_caption: True
+      auto_caption: true
   - minify:
       minify_html: true
   - git-revision-date-localized:
