@@ -60,6 +60,7 @@ class SongAdmin(admin.ModelAdmin):
         ("course", admin.RelatedFieldListFilter),
         ("album", admin.RelatedFieldListFilter),
     )
+    search_fields = ["name"]
 
 
 class Homework(models.Model):
@@ -131,6 +132,7 @@ class Assignment(models.Model):
 
 class AssignmentAdmin(admin.ModelAdmin):
     list_filter = (("homework", admin.RelatedFieldListFilter),)
+    autocomplete_fields = ["song"]
 
     def get_changeform_initial_data(self, request):
         assignment = (
