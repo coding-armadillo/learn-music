@@ -164,8 +164,7 @@ def albums(request, code):
         request,
         "courses/albums.html",
         {
-            "title": f"Check the awesome album{'s' if len(cards) > 1 else ''} of {course.code}",
-            "subtitle": None,
+            "title": course.name,
             "cards": cards,
             "null_link": reverse("courses:index"),
         },
@@ -255,7 +254,6 @@ def homeworks(request, code):
         "courses/homeworks.html",
         {
             "title": course.name,
-            "subtitle": None,
             "cards": cards,
             "null_link": reverse("courses:courses"),
             "config_url": reverse("courses:config", kwargs={"code": course.code}),
