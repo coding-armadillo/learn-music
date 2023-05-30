@@ -1,7 +1,31 @@
 {% extends "courses/base.html" %}
 
 <!-- block content -->
+{% block js_scripts %}
+<!-- top.js -->
+{% include "courses/js/top.js" %}
+<!-- endblock -->
+{% endblock %}
+
+<!-- block content -->
 {% block content %}
+<div
+  style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: none;
+    cursor: pointer;
+    z-index: 99;
+  "
+  onclick="topFunction()"
+  id="toTopBtn"
+  title="Go to top"
+  class="bg-pink-200 text-pink-800 px-3 py-1 rounded-full uppercase text-xs"
+>
+  Go to top
+</div>
+
 <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
   {% if cards %}
   <div class="text-center pb-12">
