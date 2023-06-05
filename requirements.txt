@@ -3,7 +3,7 @@ dj-database-url==2.0.0
 django-environ==0.10.0
 django-storages==1.13.2
 django-tinymce==3.6.1
-Django==4.2.1
+Django==4.2.2
 gunicorn==20.1.0
 psycopg2-binary==2.9.6
 whitenoise==6.4.0
