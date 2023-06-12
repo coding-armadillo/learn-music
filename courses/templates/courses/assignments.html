@@ -37,6 +37,11 @@
       <h2 class="text-base py-8 font-bold text-indigo-600">
         {{ homework.name }}
       </h2>
+      {% if student %}
+      <h2 class="text-base pt-2 font-bold text-indigo-800">
+        Hello, {{ student }}! Please check out the assignments.
+      </h2>
+      {% endif %}
     </div>
     <!-- loop assignments -->
     {% for assignment in assignments %}
@@ -91,6 +96,12 @@
     </div>
     <!-- endfor -->
     {% endfor %}
+    <!-- block student -->
+    {% if student %}
+    <h2 class="text-base py-4 font-bold text-indigo-800">
+      Good job, {{ student }}!
+    </h2>
+    {% endif %}
     <!-- prev/next buttons -->
     {% if assignments %}
     <br />

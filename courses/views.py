@@ -63,6 +63,7 @@ def login(request):
                 ac = None
             if ac is not None:
                 request.session[course_code] = True
+                request.session["name"] = ac.student
 
                 if homework_name:
                     return redirect(
@@ -258,6 +259,7 @@ def homeworks(request, code):
             "null_link": reverse("courses:courses"),
             "config_url": reverse("courses:config", kwargs={"code": course.code}),
             "albums_url": reverse("courses:albums", kwargs={"code": course.code}),
+            "student": request.session.get("name", ""),
         },
     )
 
@@ -295,6 +297,7 @@ def assignments(request, code, name):
             "newer": newer,
             "older": older,
             "show_solfege": show_solfege,
+            "student": request.session.get("name", ""),
         },
     )
 
