@@ -5,6 +5,7 @@
 # learn-music
 
 ![coding_style](https://img.shields.io/badge/code%20style-black-000000.svg)
+[![GitHub Pages](https://github.com/coding-armadillo/learn-music/actions/workflows/gh-deploy.yml/badge.svg)](https://github.com/coding-armadillo/learn-music/actions/workflows/gh-deploy.yml)
 
 A Django app to help with music homework
 
@@ -37,6 +38,10 @@ AWS_STORAGE_BUCKET_NAME=...
 AWS_S3_REGION_NAME=...
 SECRET_KEY=..
 ```
+
+## Docs
+
+See [https://coding-armadillo.github.io/learn-music/](https://coding-armadillo.github.io/learn-music/).
 
 ## Credits
 
