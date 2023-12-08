@@ -52,6 +52,8 @@
           class="font-light text-md bg-green-200 text-green-800 rounded-full px-3 py-1"
         >
           {{ assignment.song.name }}
+          <!-- page -->
+          {% if assignment.song.page %} ({{ assignment.song.page }}) {% endif %}
         </span>
         {% else %}
         <span
