@@ -5,7 +5,7 @@
 <!-- top.js -->
 {% include "courses/js/top.js" %}
 <!-- endblock -->
-{% endblock %}
+{% endblock %} {% load rename_assignment %}
 
 <!-- block content -->
 {% block content %}
@@ -53,7 +53,9 @@
         >
           {{ assignment.song.name }}
           <!-- page -->
-          {% if assignment.song.page %} ({{ assignment.song.page }}) {% endif %}
+          {% if assignment.song.page %}
+          <span class="text-sm"> &bull; ({{ assignment.song.page }}) </span>
+          {% endif %}
         </span>
         {% else %}
         <span
@@ -73,7 +75,7 @@
         <span
           class="bg-indigo-200 text-indigo-800 px-3 py-1 rounded-full uppercase text-xs"
         >
-          {{ assignment.name }}
+          {{ assignment.name|rename_assignment }}
         </span>
       </div>
       <div>
