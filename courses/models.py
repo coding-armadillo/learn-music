@@ -36,7 +36,7 @@ class Song(models.Model):
     page = models.CharField(max_length=10, blank=True, null=True)
 
     album = models.ForeignKey(
-        Album,
+        "Album",
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
@@ -50,10 +50,14 @@ class Song(models.Model):
     )
 
     class Meta:
-        ordering = ("name",)
+        ordering = (
+            "-course__name",
+            "album__name",
+            "name",
+        )
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.course} - {self.album} - {self.name}"
 
 
 class SongAdmin(admin.ModelAdmin):
@@ -83,7 +87,7 @@ class Homework(models.Model):
         )
 
     def __str__(self):
-        return f"{self.course}-{self.name}"
+        return f"{self.course} - {self.name}"
 
 
 class HomeworkAdmin(admin.ModelAdmin):
@@ -128,7 +132,9 @@ class Assignment(models.Model):
         )
 
     def __str__(self):
-        return f"{self.homework}-{self.name}"
+        if self.song:
+            return f"{self.homework} - {self.name} - {self.song.name}"
+        return f"{self.homework} - {self.name}"
 
 
 class AssignmentAdmin(admin.ModelAdmin):
