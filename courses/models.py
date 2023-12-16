@@ -176,6 +176,7 @@ class AccessCode(models.Model):
     class Meta:
         ordering = ("-course__name", "code")
         unique_together = ["course", "code"]
+        verbose_name_plural = "Access Codes"
 
     def __str__(self):
-        return f"{self.course}-{self.student}"
+        return f"{self.course} - {self.student}"
