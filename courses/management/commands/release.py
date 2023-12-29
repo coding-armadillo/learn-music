@@ -1,18 +1,17 @@
 import subprocess
 
 from django.core.management.base import BaseCommand
+
 from learn_music.settings import BASE_DIR
 
 
 class Command(BaseCommand):
-
     help = "Helper script to manage versioning"
 
     def add_arguments(self, parser):
         parser.add_argument("ver", type=str, help="version")
 
     def handle(self, *args, **options):
-
         try:
             with open(BASE_DIR / "version.txt") as f:
                 old_ver = f.read().strip()

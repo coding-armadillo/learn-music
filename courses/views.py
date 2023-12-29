@@ -3,11 +3,11 @@ import urllib.parse as urlparse
 
 from django.contrib import messages
 from django.db.models import Count
-from django.shortcuts import render, redirect, reverse
 from django.http.response import HttpResponseServerError
+from django.shortcuts import redirect, render, reverse
 
-from .forms import ConfigForm, LoginForm
 from . import models
+from .forms import ConfigForm, LoginForm
 
 
 def update_query_string(url, params):
