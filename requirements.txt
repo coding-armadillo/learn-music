@@ -1,9 +1,9 @@
-boto3==1.34.35
+boto3==1.34.39
 dj-database-url==2.1.0
 django-environ==0.11.2
 django-storages==1.14.2
-django-tinymce==3.6.1
-Django==5.0.1
+django-tinymce==3.7.1
+Django==5.0.2
 gunicorn==21.2.0
 psycopg2-binary==2.9.9
 whitenoise==6.6.0
