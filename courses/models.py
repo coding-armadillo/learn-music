@@ -8,7 +8,7 @@ class Course(models.Model):
     code = models.CharField(max_length=10, unique=True)
     description = models.TextField(blank=True, null=True)
     image_url = models.URLField(blank=True, null=True)
-    year = models.CharField(max_length=20,blank=True, null=True)
+    year = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
         ordering = ("-name", "-year")
