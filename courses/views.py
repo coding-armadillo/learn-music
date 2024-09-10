@@ -111,7 +111,7 @@ def courses(request):
             {
                 "image_url": course.image_url or default_img_url,
                 "description": description,
-                "name": course.name,
+                "name": course.name + (f" ({course.year})" if course.year else ""),
                 "url": reverse("courses:homeworks", kwargs={"code": course.code}),
                 "link_text": course.code.upper(),
             }
