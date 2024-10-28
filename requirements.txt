@@ -6,4 +6,4 @@ django-tinymce==4.1.0
 Django==5.1.2
 gunicorn==23.0.0
 psycopg2-binary==2.9.10
-whitenoise==6.8.0
+whitenoise==6.8.1
