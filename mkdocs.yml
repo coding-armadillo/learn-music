@@ -5,8 +5,6 @@ nav:
   - Data: data.md
 theme:
   name: material
-  favicon: https://cdn1.iconfinder.com/data/icons/material-apps/512/icon-music-material-design-512.png
-  logo: https://cdn1.iconfinder.com/data/icons/material-apps/512/icon-music-material-design-512.png
   font:
     text: Roboto
   palette:
