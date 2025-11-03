@@ -1,7 +1,3 @@
-<div align="center">
-    <img src="https://cdn1.iconfinder.com/data/icons/material-apps/512/icon-music-material-design-512.png" alt="logo" height="128">
-</div>
-
 # learn-music
 
 ![coding_style](https://img.shields.io/badge/code%20style-black-000000.svg)
@@ -42,10 +38,3 @@ SECRET_KEY=..
 ## Docs
 
 See [https://coding-armadillo.github.io/learn-music/](https://coding-armadillo.github.io/learn-music/).
-
-## Credits
-
-- [Logo][1] by [Maurilio Monsù][2]
-
-[1]: https://www.iconfinder.com/icons/3116880/design_material_music_audio_media_play_square_icon
-[2]: https://www.iconfinder.com/maurilio94
