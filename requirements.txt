@@ -1,5 +1,5 @@
-boto3==1.42.49
-dj-database-url==3.1.0
+boto3==1.42.50
+dj-database-url==3.1.1
 django-environ==0.12.1
 django-storages==1.14.6
 django-tinymce==5.0.0
