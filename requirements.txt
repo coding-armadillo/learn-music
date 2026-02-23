@@ -1,6 +1,6 @@
-boto3==1.42.50
-dj-database-url==3.1.1
-django-environ==0.12.1
+boto3==1.42.54
+dj-database-url==3.1.2
+django-environ==0.13.0
 django-storages==1.14.6
 django-tinymce==5.0.0
 Django==6.0.2
